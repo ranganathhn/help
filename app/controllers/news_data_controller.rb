@@ -1,4 +1,7 @@
 class NewsDataController < InheritedResources::Base
+	def index
+		@news_data = NewsDatum.all
+	end
 
   private
 

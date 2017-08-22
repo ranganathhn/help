@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Headlines</th>
-      <th>Description</th>
       <th>Category</th>
       <th colspan="3"></th>
     </tr>
@@ -16,16 +15,11 @@
     <% @news_data.each do |news_datum| %>
       <tr>
         <td><%= news_datum.headlines %></td>
-        <td><%= news_datum.description %></td>
-        <td><%= news_datum.category %></td>
-        <td><%= link_to 'Show', news_datum %></td>
-        <td><%= link_to 'Edit', edit_news_datum_path(news_datum) %></td>
-        <td><%= link_to 'Destroy', news_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <td><%= news_datum.category.try(:name) %></td>
+        </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New News Datum', new_news_datum_path %>
