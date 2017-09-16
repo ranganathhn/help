@@ -1,0 +1,2 @@
+module AgriaidHelper
+end

@@ -43,20 +43,22 @@ ActiveRecord::Schema.define(version: 20170822183151) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.string   "title_kn"
+    t.text     "description",    limit: 65535
+    t.text     "description_kn", limit: 65535
+    t.integer  "category_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["category_id"], name: "index_articles_on_category_id", using: :btree
+  end
+
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "news_data", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "headlines",   limit: 65535
-    t.text     "description", limit: 65535
-    t.integer  "category_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.index ["category_id"], name: "index_news_data_on_category_id", using: :btree
-  end
-
-  add_foreign_key "news_data", "categories"
+  add_foreign_key "articles", "categories"
 end

@@ -12,9 +12,9 @@
   </thead>
 
   <tbody>
-    <% @news_data.each do |news_datum| %>
+    <% @articles.each do |news_datum| %>
       <tr>
-        <td><%= news_datum.headlines %></td>
+        <td><%= news_datum.title %></td>
         <td><%= news_datum.category.try(:name) %></td>
         </tr>
     <% end %>
