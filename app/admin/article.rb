@@ -1,4 +1,9 @@
 ActiveAdmin.register Article do
+ 
+ index do
+    actions 
+    column :title
+  end
 
   form do |f|
     inputs 'Article Details' do
